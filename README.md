@@ -2,7 +2,7 @@
 
 A Streamlit app for estimating monthly AI project costs across OpenAI, Anthropic, AWS Bedrock, and Google Gemini models.
 
-![Screenshot placeholder](docs/screenshot-placeholder.png)
+
 
 ## What it does
 
@@ -73,7 +73,7 @@ export GOOGLE_API_KEY=...
 
 ## Pricing disclaimer
 
-Pricing is configured as of 2026-05-26. Verify provider pricing before pitching or budgeting.
+Pricing is configured as of 2026-05-25. Verify provider pricing before pitching or budgeting.
 
 Pricing changes often. Any model with uncertain pricing is intentionally set to `None` in `pricing.py`, and the app skips that model with a clear "price not configured" message instead of guessing.
 
