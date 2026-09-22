@@ -40,7 +40,7 @@ def main() -> None:
 
     with st.sidebar:
         if ALLOW_PRICING_UPDATE:
-            if st.button("Update pricing", use_container_width=True):
+            if st.button("Update pricing", width="stretch"):
                 run_pricing_updater()
         else:
             st.caption("Public demo mode: pricing updates are reviewed in the repository before release.")
@@ -125,7 +125,7 @@ def main() -> None:
         )
     if token_preview_rows:
         st.subheader("Parsed conversation token preview")
-        st.dataframe(pd.DataFrame(token_preview_rows), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(token_preview_rows), width="stretch", hide_index=True)
 
     rows, skipped = cost_calculator.calculate_estimates(
         messages=messages,
@@ -169,7 +169,7 @@ def main() -> None:
     bar.update_xaxes(showgrid=False)
     bar.update_yaxes(showgrid=False)
     bar.update_traces(textposition="outside", cliponaxis=False)
-    st.plotly_chart(bar, use_container_width=True)
+    st.plotly_chart(bar, width="stretch")
 
     st.subheader("Detailed breakdown")
     display_df = df[
@@ -185,7 +185,7 @@ def main() -> None:
     ].copy()
     for column in ["Input cost", "Output cost", "Monthly cost"]:
         display_df[column] = display_df[column].map(lambda value: round(value, 2))
-    st.dataframe(display_df, use_container_width=True, hide_index=True)
+    st.dataframe(display_df, width="stretch", hide_index=True)
 
     st.subheader("Volume sensitivity")
     volumes = [100, 300, 1_000, 3_000, 10_000, 30_000, 100_000]
@@ -213,7 +213,7 @@ def main() -> None:
     line.update_layout(plot_bgcolor="white", xaxis_title="Conversations/month", yaxis_title="Monthly cost (USD)")
     line.update_xaxes(showgrid=False)
     line.update_yaxes(showgrid=False)
-    st.plotly_chart(line, use_container_width=True)
+    st.plotly_chart(line, width="stretch")
 
     st.caption(
         "Token estimates for Anthropic and Gemini use provider token counters when API keys are configured; otherwise they use an approximate character heuristic."
