@@ -2,6 +2,8 @@
 
 A Streamlit app for estimating monthly AI project costs across OpenAI, Anthropic, AWS Bedrock, and Google Gemini models.
 
+> **Public demo behavior:** Anyone can try the estimator without an account or API key. Pricing refreshes are intentionally disabled in deployed demos and are reviewed in Git before release.
+
 
 
 ## What it does
@@ -61,6 +63,10 @@ Then open the local URL printed by Streamlit, usually:
 ```text
 http://localhost:8501
 ```
+
+## Deploy a public demo
+
+The app is ready for [Streamlit Community Cloud](https://streamlit.io/cloud): select this repository and use `app.py` as the entry point. No secrets are required for the baseline experience. Keep `ALLOW_PRICING_UPDATE` unset in the hosted app so public visitors cannot run the maintenance updater.
 
 API keys are optional:
 

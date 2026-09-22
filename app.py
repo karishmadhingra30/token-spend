@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -27,14 +28,22 @@ PROVIDER_COLORS = {
     "Google Gemini": "#7A5C99",
 }
 
+# The deployed demo should be read-only: public visitors can model costs but
+# cannot trigger a server-side rewrite of the checked-in pricing configuration.
+ALLOW_PRICING_UPDATE = os.getenv("ALLOW_PRICING_UPDATE", "false").lower() == "true"
+
 
 def main() -> None:
     st.set_page_config(page_title="LLM Cost Estimator", layout="wide")
     st.title("Multi-provider LLM cost estimator")
+    st.caption("Compare a representative customer workflow before committing to a model or volume plan.")
 
     with st.sidebar:
-        if st.button("Update pricing", use_container_width=True):
-            run_pricing_updater()
+        if ALLOW_PRICING_UPDATE:
+            if st.button("Update pricing", use_container_width=True):
+                run_pricing_updater()
+        else:
+            st.caption("Public demo mode: pricing updates are reviewed in the repository before release.")
         st.info(
             f"Pricing last updated: {pricing_config.PRICING_LAST_UPDATED}. Verify before pitching."
         )
