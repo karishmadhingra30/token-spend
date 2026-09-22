@@ -4,6 +4,8 @@ A Streamlit app for estimating monthly AI project costs across OpenAI, Anthropic
 
 > **Public demo behavior:** Anyone can try the estimator without an account or API key. Pricing refreshes are intentionally disabled in deployed demos and are reviewed in Git before release.
 
+**[Try the live cost estimator](https://karishma-token-spend.streamlit.app/) →**
+
 
 
 ## What it does
